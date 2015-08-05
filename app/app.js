@@ -1,19 +1,21 @@
 var app = angular.module('calendarDemoApp', []);
 
-app.controller("calendarController",["CalendarRange",function($scope,CalendarRange){
+app.controller("calendarController",function($scope){
     var vm=this;
-}]);
+});
 
 app.directive("dateControl", function ($sce) {
     return {
         restrict: 'E',
         scope: true,
-        require: "calendarController",
         templateUrl: 'date-control.html',
         controllerAs: 'ctrl',
         controller: function ($scope, $element, $attrs) {
             var vm = this;
             vm.years=[];
+            vm.currentMonth=undefined;
+            vm.currentYear=undefined;
+            vm.dateRangeResult=undefined;
             vm.months=[{month:"January",value:1},
                 {month:"February",value:2},
                 {month:"March",value:3},
@@ -32,11 +34,20 @@ app.directive("dateControl", function ($sce) {
             }
 
             vm.changeMonth=function(month){
+                vm.currentMonth=month;
                 console.log("month ->"+month);
+                changeDisplay();
             };
 
             vm.changeYear=function(year){
+                vm.currentYear=year;
               console.log("year -> "+year);
+                changeDisplay();
+            };
+
+            function changeDisplay(){
+                var date=new Date(vm.currentYear,vm.currentMonth,1,1,1,1,1);
+                vm.dateRangeResult= CalendarRange.getMonthlyRange(date);
             };
 
         },

@@ -11,4 +11,11 @@
                    {{year}}
          </option>
     </select>
+    <div ng-if="ctrl.dateRangeResult!=undefined">
+        <div ng-repeat="item in ctrl.dateRangeResult.days" class="date">
+            <p>{{item.date}}</p>
+            <p>{{item.day}}</p>
+            <p>{{item.month}}</p>
+        </div>
+    </div>
 </div>
