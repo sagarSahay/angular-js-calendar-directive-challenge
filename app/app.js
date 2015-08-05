@@ -13,9 +13,18 @@ app.directive("dateControl", function ($sce) {
         controller: function ($scope, $element, $attrs) {
             var vm = this;
             vm.years=[];
-            vm.currentMonth=undefined;
-            vm.currentYear=undefined;
+
+
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            vm.currentMonth=mm;
+            vm.currentYear=yyyy;
             vm.dateRangeResult=undefined;
+
+
             vm.months=[{month:"January",value:1},
                 {month:"February",value:2},
                 {month:"March",value:3},
@@ -29,7 +38,7 @@ app.directive("dateControl", function ($sce) {
                 {month:"November",  value:11},
                 {month:"December", value:12}];
 
-            for(i=1900;i<=2020;i++){
+            for(i=1995;i<=2035;i++){
                 vm.years.push(i);
             }
 
@@ -47,7 +56,7 @@ app.directive("dateControl", function ($sce) {
 
             function changeDisplay(){
                 var date=new Date(vm.currentYear,vm.currentMonth,1,1,1,1,1);
-                vm.dateRangeResult= CalendarRange.getMonthlyRange(date);
+                vm.dateRangeResult = CalendarRange.getMonthlyRange(date);
             };
 
         },

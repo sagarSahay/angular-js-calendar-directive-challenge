@@ -1,5 +1,5 @@
 <div>
-    <select ng-model="selectedMonth" ng-change="ctrl.changeMonth(selectedMonth)">
+    <select ng-model="ctrl.currentMonth"  ng-change="ctrl.changeMonth(selectedMonth)">
         <option ng-repeat="item in ctrl.months" value={{item.value}}>
             {{item.month}}
         </option>
@@ -13,9 +13,7 @@
     </select>
     <div ng-if="ctrl.dateRangeResult!=undefined">
         <div ng-repeat="item in ctrl.dateRangeResult.days" class="date">
-            <p>{{item.date}}</p>
             <p>{{item.day}}</p>
-            <p>{{item.month}}</p>
         </div>
     </div>
 </div>
