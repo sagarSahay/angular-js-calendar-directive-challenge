@@ -1,12 +1,12 @@
 <div>
-    <select ng-model="ctrl.currentMonth"  ng-change="ctrl.changeMonth(selectedMonth)">
+    <select ng-model="ctrl.currentMonth"  ng-change="ctrl.changeDisplay()"  >
         <option ng-repeat="item in ctrl.months" value={{item.value}}>
             {{item.month}}
         </option>
 
     </select>
 
-    <select ng-model="selectedYear" ng-change="ctrl.changeYear(selectedYear)">
+    <select ng-model="ctrl.currentYear" ng-change="ctrl.changeDisplay()">
          <option ng-repeat="year in ctrl.years" value="{{year}}">
                    {{year}}
          </option>
