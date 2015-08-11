@@ -31,13 +31,13 @@ app.directive("dateControl", function ($sce) {
                 vm.years.push(i);
             }
 
-            var today = new Date();
-            vm.currentMonth=vm.months[today.getMonth()+1].month;
-            vm.currentYear=today.getFullYear();
-            vm.dateRangeResult=undefined;
+            //var today = new Date();
+            //vm.currentMonth=vm.months[7].value;//vm.months[today.getMonth()+1].month;
+            //vm.currentYear=2015;//today.getFullYear();
+            //vm.dateRangeResult=undefined;
 
             vm.changeDisplay=function(){
-                var date=new Date(vm.currentYear,vm.currentMonth,1,1,1,1,1);
+                var date=new Date(vm.currentYear,vm.currentMonth-1,1,1,1,1,1);
                 vm.dateRangeResult = CalendarRange.getMonthlyRange(date);
             };
 

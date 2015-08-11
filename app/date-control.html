@@ -1,6 +1,6 @@
-<div>
-    <select ng-model="ctrl.currentMonth"  ng-change="ctrl.changeDisplay()"  >
-        <option ng-repeat="item in ctrl.months" value={{item.value}}>
+<div style="background-color: black">
+    <select  ng-model="ctrl.currentMonth"  ng-change="ctrl.changeDisplay()"  >
+        <option ng-repeat="item in ctrl.months" value={{item.value}} >
             {{item.month}}
         </option>
 
@@ -12,7 +12,7 @@
          </option>
     </select>
     <div ng-if="ctrl.dateRangeResult!=undefined">
-        <div ng-repeat="item in ctrl.dateRangeResult.days" class="date">
+        <div ng-repeat="item in ctrl.dateRangeResult.days" ng-class="{ 'date':item.weekday, 'dateWeekend': !item.weekday }" >
             <p>{{item.day}}</p>
         </div>
     </div>
